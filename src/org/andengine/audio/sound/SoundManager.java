@@ -65,6 +65,7 @@ public class SoundManager extends BaseAudioManager<Sound> implements OnLoadCompl
 
 	@Override
 	public boolean remove(final Sound pSound) {
+		pSound.stop();
 		final boolean removed = super.remove(pSound);
 		if (removed) {
 			this.mSoundMap.remove(pSound.getSoundID());

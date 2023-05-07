@@ -1,5 +1,6 @@
 package org.andengine.entity.particle;
 
+import android.annotation.SuppressLint;
 import java.util.ArrayList;
 
 import org.andengine.engine.camera.Camera;
@@ -40,8 +41,8 @@ public class ParticleSystem<T extends IEntity> extends Entity {
 	protected final ArrayList<IParticleInitializer<T>> mParticleInitializers = new ArrayList<IParticleInitializer<T>>();
 	protected final ArrayList<IParticleModifier<T>> mParticleModifiers = new ArrayList<IParticleModifier<T>>();
 
-	private final float mRateMinimum;
-	private final float mRateMaximum;
+	private float mRateMinimum;
+	private float mRateMaximum;
 
 	private boolean mParticlesSpawnEnabled = true;
 
@@ -91,6 +92,18 @@ public class ParticleSystem<T extends IEntity> extends Entity {
 		return this.mParticleEmitter;
 	}
 
+	public void setRate(final float pRateMinimum, final float pRateMaximum)
+	{
+		mRateMinimum = pRateMinimum;
+		mRateMaximum = pRateMaximum;
+	}
+	
+	public void setRate(final float pRate)
+	{
+		mRateMinimum = pRate;
+		mRateMaximum = pRate;
+	}
+	
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
@@ -103,6 +116,7 @@ public class ParticleSystem<T extends IEntity> extends Entity {
 		this.mParticlesAlive = 0;
 	}
 
+	@SuppressLint("WrongCall")
 	@Override
 	protected void onManagedDraw(final GLState pGLState, final Camera pCamera) {
 		for (int i = this.mParticlesAlive - 1; i >= 0; i--) {

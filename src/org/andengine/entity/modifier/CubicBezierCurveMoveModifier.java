@@ -21,14 +21,14 @@ public class CubicBezierCurveMoveModifier extends DurationEntityModifier {
 	// Fields
 	// ===========================================================
 
-	private final float mX1;
-	private final float mY1;
-	private final float mX2;
-	private final float mY2;
-	private final float mX3;
-	private final float mY3;
-	private final float mX4;
-	private final float mY4;
+	private float mX1;
+	private float mY1;
+	private float mX2;
+	private float mY2;
+	private float mX3;
+	private float mY3;
+	private float mX4;
+	private float mY4;
 
 	private final IEaseFunction mEaseFunction;
 
@@ -116,14 +116,36 @@ public class CubicBezierCurveMoveModifier extends DurationEntityModifier {
 		return new CubicBezierCurveMoveModifier(this.mDuration, this.mX1, this.mY1, this.mX2, this.mY2, this.mX3, this.mY3, this.mX4, this.mY4, this.mEaseFunction);
 	}
 
+	
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
-
+	public void reset(final float pDuration, final float pX1, final float pY1, final float pX2, final float pY2, final float pX3, final float pY3, final float pX4, final float pY4) {
+		super.reset();
+		this.mDuration = pDuration;
+		this.mX1 = pX1;
+		this.mY1 = pY1;
+		this.mX2 = pX2;
+		this.mY2 = pY2;
+		this.mX3 = pX3;
+		this.mY3 = pY3;
+		this.mX4 = pX4;
+		this.mY4 = pY4;
+	}
+	
+	public float getToX()
+	{
+		return this.mX4;
+	}
+	
+	public float getToY()
+	{
+		return this.mY4;
+	}
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
-
+	
 	@Override
 	protected void onManagedInitialize(final IEntity pEntity) {
 

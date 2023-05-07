@@ -40,7 +40,7 @@ public class Camera implements IUpdateHandler {
 	private float mZNear = -1.0f;
 	private float mZFar = 1.0f;
 
-	private HUD mHUD;
+	protected HUD mHUD;
 
 	private IEntity mChaseEntity;
 

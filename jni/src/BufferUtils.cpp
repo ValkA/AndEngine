@@ -1,6 +1,7 @@
 #include "BufferUtils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <cstring>
 
 // ===========================================================
 // org.andengine.opengl.util.BufferUtils

@@ -27,13 +27,13 @@ public class ScreenGrabber extends Entity {
 	// Fields
 	// ===========================================================
 
-	private int mGrabX;
-	private int mGrabY;
-	private int mGrabWidth;
-	private int mGrabHeight;
+	protected int mGrabX;
+	protected int mGrabY;
+	protected int mGrabWidth;
+	protected int mGrabHeight;
 
-	private boolean mScreenGrabPending;
-	private IScreenGrabberCallback mScreenGrabCallback;
+	protected boolean mScreenGrabPending;
+	protected IScreenGrabberCallback mScreenGrabCallback;
 
 	// ===========================================================
 	// Constructors
@@ -98,7 +98,7 @@ public class ScreenGrabber extends Entity {
 		GLES20.glReadPixels(pGrabX, pGrabY, pGrabWidth, pGrabHeight, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, pixelsRGBA_8888_Buffer);
 
 		/* Convert from RGBA_8888 (Which is actually ABGR as the whole buffer seems to be inverted) --> ARGB_8888. */
-		final int[] pixelsARGB_8888 = GLHelper.convertRGBA_8888toARGB_8888(pixelsRGBA_8888);
+		final int[] pixelsARGB_8888 = GLHelper.convertRGBA_8888toARGB_8888_FlippedVertical(pixelsRGBA_8888, pGrabWidth, pGrabHeight);
 
 		return Bitmap.createBitmap(pixelsARGB_8888, pGrabWidth, pGrabHeight, Config.ARGB_8888);
 	}

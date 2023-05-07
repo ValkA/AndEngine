@@ -29,10 +29,10 @@ public class ButtonSprite extends TiledSprite {
 	// ===========================================================
 
 	private final int mStateCount;
-	private OnClickListener mOnClickListener;
+	protected OnClickListener mOnClickListener;
 
 	private boolean mEnabled = true;
-	private State mState;
+	protected State mState;
 
 	// ===========================================================
 	// Constructors
@@ -153,7 +153,7 @@ public class ButtonSprite extends TiledSprite {
 	// Methods
 	// ===========================================================
 
-	private void changeState(final State pState) {
+	protected void changeState(final State pState) {
 		if (pState == this.mState) {
 			return;
 		}

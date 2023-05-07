@@ -1,8 +1,8 @@
 package org.andengine.entity;
 
+import android.annotation.SuppressLint;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.engine.handler.UpdateHandlerList;
@@ -89,8 +89,8 @@ public class Entity implements IEntity {
 
 	protected float mRotationCenterX = IEntity.ROTATION_CENTER_X_DEFAULT;
 	protected float mRotationCenterY = IEntity.ROTATION_CENTER_Y_DEFAULT;
-	protected float mLocalRotationCenterX;
-	protected float mLocalRotationCenterY;
+	public float mLocalRotationCenterX;
+	public float mLocalRotationCenterY;
 
 	protected float mScaleX = IEntity.SCALE_X_DEFAULT;
 	protected float mScaleY = IEntity.SCALE_Y_DEFAULT;
@@ -108,8 +108,8 @@ public class Entity implements IEntity {
 	protected float mLocalSkewCenterX;
 	protected float mLocalSkewCenterY;
 
-	private boolean mLocalToParentTransformationDirty = true;
-	private boolean mParentToLocalTransformationDirty = true;
+	public boolean mLocalToParentTransformationDirty = true;
+	public boolean mParentToLocalTransformationDirty = true;
 
 	private Transformation mLocalToParentTransformation;
 	private Transformation mParentToLocalTransformation;
@@ -1594,6 +1594,7 @@ public class Entity implements IEntity {
 		}
 	}
 
+	@SuppressLint("WrongCall")
 	protected void onManagedDraw(final GLState pGLState, final Camera pCamera) {
 		pGLState.pushModelViewGLMatrix();
 		{
